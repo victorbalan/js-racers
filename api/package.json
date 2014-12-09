@@ -1,0 +1,11 @@
+{
+	"name": "js-racers-api",
+	"main": "app.js",
+	"dependencies": {
+		"express" : "~3.0", 
+		"express-jwt" : "~0.4.0", 
+		"connect": "~2.8",
+		"jsonwebtoken" : "~1.1.2",
+		"mongoose" : "~3.8"
+  }
+}
