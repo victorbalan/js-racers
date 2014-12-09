@@ -8,5 +8,5 @@ js-racers
   <li>run npm install on /api</li>
   <li>node app.js on/api(this will start the backend)</li>
   <li>run npm install on /app</li>
-  <li>run bower install on /app<li>
+  <li>run bower install on /app</li>
   <li>run grunt serve on /api(yes it is /serve. no typo. the /server config is deprecated)</li>
