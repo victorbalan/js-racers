@@ -42,7 +42,7 @@ app.options('*', function(req, res) {
 });
 
 // Connect to our database
-//mongoose.connect('mongodb://127.0.0.1/js_racers');
+mongoose.connect('mongodb://admin:admin@ds063630.mongolab.com:63630/js_racers');
 
 // Routes
 
