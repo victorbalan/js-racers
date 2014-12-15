@@ -2,14 +2,14 @@
 
 /**
  * @ngdoc overview
- * @name appApp
+ * @name jsRacers
  * @description
- * # appApp
+ * # jsRacers
  *
  * Main module of the application.
  */
 angular
-  .module('appApp', [
+  .module('jsRacers', [
     'ngAnimate',
     'ngCookies',
     'ngResource',
@@ -26,6 +26,10 @@ angular
       .when('/about', {
         templateUrl: 'views/about.html',
         controller: 'AboutCtrl'
+      })
+      .when('/game', {
+        templateUrl: 'views/game.html',
+        controller: 'GameController'
       })
       .otherwise({
         redirectTo: '/'
