@@ -1,50 +1,18 @@
-var express     = require('express');
-var expressJwt  = require('express-jwt');
-var connect     = require('connect');
-var mongoose    = require('mongoose');
-var app         = express();
-var port        = process.env.PORT || 8080;
+var express = require('express');
+var routes = require('./routes');
+var configuration = require('./configuration');
 
-var SECRET = 'shhhhhhared-secret'
-// Configuration
-app.use(express.static(__dirname + '/public'));
+var app = express();
+var port = process.env.PORT || 8080;
 
-//app.use('/', expressJwt({
-//			secret : SECRET}).unless({path: ['/login','/register']}));
-			
-//app.use(function (err, req, res, next) {
-//  if (err.name === 'UnauthorizedError') {
-//    res.header('Access-Control-Allow-Origin', req.headers.origin);
-//    res.header('Access-Control-Allow-Methods', 'POST, GET, PUT, DELETE, OPTIONS');
-//    res.header('Access-Control-Allow-Credentials', false);
-//    res.header('Access-Control-Max-Age', '86400');
-//    res.header('Access-Control-Allow-Headers', 'X-Requested-With, X-HTTP-Method-Override,  Content-Type, Accept, Authorization');
-//    res.status(401).send(401)
-//    console.log("401 error")
-//  }
-//});
+var Config = configuration(app);
 
-app.use(connect.logger('dev'));
-app.use(connect.json());  
-app.use(connect.urlencoded());
+app.configure(Config.basicConfiguration);
+app.configure('development', Config.development);
 
-app.all('/*', function(req, res, next) {
-    res.header('Access-Control-Allow-Origin', req.headers.origin);
-    res.header('Access-Control-Allow-Methods', 'POST, GET, PUT, DELETE, OPTIONS');
-    res.header('Access-Control-Allow-Credentials', false);
-    res.header('Access-Control-Max-Age', '86400');
-    res.header('Access-Control-Allow-Headers', 'X-Requested-With, X-HTTP-Method-Override,  Content-Type, Accept, Authorization');
-    next();
-});
+Config.configureMongoose();
 
-app.options('*', function(req, res) {
-    res.send(200);
-});
-
-// Connect to our database
-mongoose.connect('mongodb://admin:admin@ds063630.mongolab.com:63630/js_racers');
-
-// Routes
+routes.setup(app, null);
 
 app.listen(port);
 
