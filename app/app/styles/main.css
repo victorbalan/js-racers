@@ -78,6 +78,11 @@ body {
   }
 }
 
-canvas {
-    border: 3px solid red;
+.debug {
+  border: 1px solid red; 
+}
+
+#game {
+  width : 500px;
+  height : 500px;
 }
