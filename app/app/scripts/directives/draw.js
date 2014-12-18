@@ -30,7 +30,7 @@ angular.module('jsRacers')
                 }
 
                 $scope.resize = function() {
-                    view.viewSize = new Size($(element).parent().width(), $(element).parent().height());    
+                    view.viewSize = new Size($(element).parent().width(), 500);    
                 }
 
                 $(window).resize($scope.onResize);
